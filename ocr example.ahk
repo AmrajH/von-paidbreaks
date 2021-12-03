@@ -1,7 +1,7 @@
 ;hotkey to activate OCR
 +!q::
 	getSelectionCoords(x_start, x_end, y_start, y_end)
-	RunWait, C:\Capture2Text.exe %x_start% %y_start% %x_end% %y_end%
+	RunWait, %A_ScriptDir%\Capture2Text\Capture2Text.exe --screen-rect "%x_start% %y_start% %x_end% %y_end%" --clipboard
 	MsgBox, In area :: x_start: %x_start% --> x_end: %x_end% , y_start: %y_start% --> y_end: %y_end%`n`nFound Text:`n`n%clipboard%
 return
 
