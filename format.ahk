@@ -8,6 +8,10 @@ format(raw) ; formats the raw text
 
   name := workingArr[1]
   name := StrSplit(name, ",", A_Space)
+  name[1] := StrSplit(name[1], A_Space, A_Space)
+  name[1] := name[1, 1]
+  name[2] := StrSplit(name[2], A_Space, A_Space)
+  name[2] := name[2, 1]
 
   actual := StrSplit(workingArr[2], A_Tab, A_Space)
   actual := StrSplit(actual[4], A_Space)
