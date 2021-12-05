@@ -1,20 +1,49 @@
 #SingleInstance force
-;x := clipboard
-;RunWait %A_AhkPath% "format.ahk"
-;format := clipboard
-;MsgBox % clipboard
-;clipboard := x
-; read name then if no match click next and read name
-;find(first, last){
-;
-;}
-;358, 292
-;399, 289 0078D7
+
+
+/*
+queue.Insert(42)  Enqueue
+MsgBox % queue.Remove(1)   Dequeue
+The plan:
+
+  function to check if breaks are left:
+    While colour is NOT 0xE1E1E1:
+    check colour
+      if yes:
+        return
+      if no:
+        MsgBox
+    return
+
+  process the formated text:
+    Make array seperated by commas ","
+    for every element in that array make a new array seperated by "|" (try using a queue)
+
+  Finish checkName function:
+    check if name is equal to the first name on the list
+    if it isn't:
+      return
+    if it is:
+      add amount of breaks
+      queue.Remove(1)   (Dequeue)
+
+*/
+
+originalClip := clipboard
+RunWait %A_AhkPath% "format.ahk"
+format := clipboard
+MsgBox % clipboard
+
+checkName() ;Checks name to see if it matches the next one on the list
+{
+  ClipWait, 5
+
+}
+
 SetDefaultMouseSpeed, 0
 x::
-  while True {
-    Send, ^{F8}
-    Sleep, 150
+  while True
+  {
     PixelGetColor, col, 745, 422
     if(col == "0xE1E1E1"){
       Sleep, 250
@@ -27,8 +56,12 @@ x::
       Click
       Sleep, 150
       Click
-      ;Break
+      checkName()
     }
+    Send, ^{F8}
+    Sleep, 150
   }
+  clipboard := originalClip
   return
+
 z::ExitApp
