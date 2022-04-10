@@ -15,7 +15,6 @@ Loop, parse, format, `, ; Turns formatted text into an array
   }
 }
 
-;729, 335 off button
 
 checkBreaks() ; function to check if breaks are left
 {
