@@ -15,7 +15,6 @@ Loop, parse, format, `, ; Turns formatted text into an array
   }
 }
 
-
 checkBreaks() ; function to check if breaks are left
 {
   colour := 0x000000
