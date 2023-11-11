@@ -1,5 +1,5 @@
 ; returns name for everyone with more than 4.5 hours worked
-;raw text example : Yussuf, Risikat (7017692) - Subtotal:	11 h 1 m		7 h 27 m	-6 h 8 m
+;raw text example : lName, fName (0000000) - Subtotal:	11 h 1 m		7 h 27 m	-6 h 8 m
 formatted := ""
 final := ""
 format(raw) ; formats the raw text
@@ -29,7 +29,7 @@ format(raw) ; formats the raw text
   return name[1] "|" name[2] "|" actual
 }
 
-Loop, parse, clipboard, `n, `r  ; goes through every line is the clipboard
+Loop, parse, clipboard, `n, `r  ; goes through every line in the clipboard
 {
 
     IfInString, A_LoopField, subtotal
